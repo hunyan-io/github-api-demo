@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GitHub API Demo
 
-## Getting Started
+This is a web app that demonstrates a simple usage of GitHub's v4 GraphQL API. The user can login using their GitHub account and filter through their repositories using a search bar. The following tools are used:
 
-First, run the development server:
+- Next 13 app router
+- Next Auth (GitHub Provider)
+- Tanstack React Query
+- @octokit/graphql
+- Tailwind
+- Jest and React Testing Library
+- Storybook
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+See it live on https://github-api-demo.vercel.app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![](docs/demo.mp4)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running
 
-## Learn More
+### GitHub OAuth App
 
-To learn more about Next.js, take a look at the following resources:
+GitHub authentication requires that you register an OAuth app. You can do it in [settings](https://github.com/settings/applications/new). When registering it make sure to set the authorization callback URL to `<base_url>/api/auth/callback/github` where `<base_url>` is the url of the Next app (`http://localhost:3000` if you're running it locally).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The following environment variables have to be set up. If you're running locally, you can add these in a `.env.local` file in the root directory.
 
-## Deploy on Vercel
+- `GITHUB_CLIENT_ID`: The client ID of the GitHub OAuth app you just registered.
+- `GITHUB_CLIENT_SECRET`: The client secret of the GitHub OAuth app you just registered.
+- `NEXTAUTH_URL`: The base url of the Next app (`http://localhost:3000/` if you're running locally).
+- `NEXTAUTH_SECRET`: A secret used for encrypting JWT tokens. You can generate a random one.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Starting the Next app
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Make sure dependencies have been installed with `npm install`. Next, you can start the dev server with `npm run dev`. To run a production server, first run `npm run build` then `npm start`.
+
+## Tests
+
+When developing, you can run the test suite with `npm run test`. This keeps a watcher on your files and re-runs tests on file changes. To run the tests once, you can use `npm run test:ci`.
+
+## Storybook
+
+To visualize the UI components in storybook simply run `npm run storybook`. The storybook server will run on `http://localhost:6006`.
+
+## Future improvements
+
+- Add E2E testing with Cypress
