@@ -14,7 +14,7 @@ This is a web app that demonstrates a simple usage of GitHub's v4 GraphQL API. T
 
 See it live on https://github-api-demo.vercel.app
 
-![](docs/demo.mp4)
+https://github.com/HunYan-io/github-api-demo/assets/40696130/eaf61787-5368-462d-a426-0de0c3a729ee
 
 ## Running
 
